@@ -1,40 +1,27 @@
 #!/usr/bin/env python
 
-"""
-Picked this because I'm generally interested in these half-editorial
-half-programming living-document content space. And because I generalized from a
-rap-oriented project - sounded familiar.
-
-Why I wrote it.
-What it does.
-How it works.
-What else could it do?
-
-TODO:
-  + Encapsulate rap-name specific stuff.
-  + Add celeb name stuff.
-  + Specify SETS as a single string which is parsed.
-  + Include top-level productions ("sentences") as
-  + Clean up whitespace.
-  - Differntiate token type (literal / terminal / non-terminal) in grammar
-    syntax.
-"""
-
 import logging
 import random
 import re
 import sys
 
 def load_grammar(path):
-  """ Given a path to a grammar, generate a dict where heads are
-  keys and valid productions are tails - sets of strings """
+
+  """ Given a path to a grammar, parse the grammar, and generate a dict where
+  heads are keys and valid productions are values represented as sets of
+  strings. """
 
   def stripped (lines):
+
+    """ Trim whitespace from input lines. """
+
     for line in lines:
       yield line.strip()
 
   def block_split (lines, p, yield_empty=False):
+
     """ Yield blocks based on lines matching a predicate. """
+
     block = []
     for line in lines:
       if p(line):
@@ -52,26 +39,33 @@ def load_grammar(path):
         yield block
 
   def productions (blocks):
+
     """ Convert blocks of lines to (head, tail) pairs representing a prodution.
     The head is the non-terminal and the tail is a list of possible productions.
     """
+
     for block in blocks:
       yield (block[0], block[1:])
 
   def uncommented (lines):
+
     """ Strip comments from input. """
+
     for line in lines:
       if not line.startswith('#'):
         yield line
 
   def lines (path):
+
     """ Given a path, generate lines in that file. """
+
     with open(path) as f:
       for line in f:
         yield line
 
   lines = uncommented(stripped(lines(path)))
   blocks = block_split(lines, p=lambda line: not line)
+
   return dict(productions(blocks))
 
 def gen_name(grammar):
@@ -105,7 +99,7 @@ def gen_name(grammar):
 
       return token
 
-   # Pick a sentence at random, and generate a rap name.
+   # Pick a sentence at random, and generate a name.
    sentence = random.choice(grammar['sentences'])
 
    # TODO: Recursively expand tokens until there are no non-terminals in the list.
@@ -119,6 +113,7 @@ if __name__ == '__main__':
   grammar_path = sys.argv[1]
   grammar = load_grammar(grammar_path)
 
+  # Generate some initial values for rap names based on user's name.
   if grammar_path == 'rapname.grammar':
     name = sys.argv[2]
     grammar.update({
