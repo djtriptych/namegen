@@ -2,24 +2,13 @@
 
 """
 Picked this because I'm generally interested in these half-editorial
-half-programming living-document content space.
+half-programming living-document content space. And because I generalized from a
+rap-oriented project - sounded familiar.
 
-Here, a programmer is assisting an editor in creating a grammar which, given
-some input (a user's name) will generate some new string.
-
-It's pretty typical of code I write - lots of dumb data and simple functions,
-and hopefully very few tricky parts, which I take care to explain well.
-
-I find it a very beautiful piece of code. It solves an interesting problem AND
-there are lots of obvious and interesting ways to amend it for other uses.
-
-Here's what it does....
-
-Given a user's name, generate a rap name.
-
-It works by creating a full rap name grammar to rap names, which is augmented
-acoording to the users input.
-
+Why I wrote it.
+What it does.
+How it works.
+What else could it do?
 
 TODO:
   + Encapsulate rap-name specific stuff.
@@ -94,25 +83,26 @@ def gen_name(grammar):
      return tokens
 
    def convert_token(token):
-      # Helper functions
+
       def is_string(token):
          return token.startswith('"')
+
       def is_set_name(token):
          return token in grammar
+
       def unquote(token):
          return token[1:-1]
-      def get_set(token):
-         return grammar[token]
+
       def capitalize(phrase):
          for word in phrase.split():
             yield word[0].upper() + word[1:]
+
       def random_choice(set):
          return random.choice(set)
 
-      if is_string(token):
-         return unquote(token)
       if is_set_name(token):
-         return ' '.join(list(capitalize(random_choice(get_set(token)))))
+         return ' '.join(list(capitalize(random_choice(grammar[token]))))
+
       return token
 
    # Pick a sentence at random, and generate a rap name.

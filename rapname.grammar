@@ -1,4 +1,5 @@
 
+# Comments are ok!
 sentences
   initialletters
   Notorious initialletters
@@ -6,21 +7,21 @@ sentences
   honorific initial
   killer initial
   honorific initialletters
-  adjective noun initial 
+  adjective noun initial
   name Dogg
   initial Dogg
   initial murder
   preadjective Kid initial
   preadjective DJ initial
   preadjective name the adjective occupation
-  honorific initial the adjective occupation 
-  adjective initial the occupationadjective occupation 
+  honorific initial the adjective occupation
+  adjective initial the occupationadjective occupation
   name the occupationadjective occupation
   name the occupation
   name the adjective occupation
   name the occupationadjective
-  honorific initial the adjective occupation 
-  adjective initial the occupationadjective occupation 
+  honorific initial the adjective occupation
+  adjective initial the occupationadjective occupation
   name the occupationadjective occupation
   name the occupation
   name the adjective occupation
@@ -69,33 +70,33 @@ nationality
   Brooklyn
 
 occupationadjective
-  abstract 
-  magnanimous 
-  illustrious 
+  abstract
+  magnanimous
+  illustrious
   magnificent
-  based 
+  based
   golden
   notorious
   pragmatic
 
 preoccupation
-  hustler 
+  hustler
   killa
   prince
   pimp
 
 occupation
-  hustler 
-  thug 
-  one 
-  thief 
-  pimp 
-  kid 
-  god 
-  poetic 
-  MC 
-  killer 
-  soldier 
-  homosapien 
+  hustler
+  thug
+  one
+  thief
+  pimp
+  kid
+  god
+  poetic
+  MC
+  killer
+  soldier
+  homosapien
 
 # This is a comment
